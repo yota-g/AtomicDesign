@@ -3,10 +3,10 @@ import { Card } from "../../atom/card/card";
 import { UserIconWithName } from "../../molecules/user/UserIconWithName";
 
 export const UserCard = (props) => {
-  const { user } = props;
+  const { user, isAdmin } = props;
   return (
     <Card>
-      <UserIconWithName image={user.image} name={user.name} />
+      <UserIconWithName image={user.image} name={user.name} isAdmin={isAdmin} />
       {/* photosは決して、sourceを記載。 */}
       {/* <img height={160} width={160} src={user.image} alt="プロフィール" />
       <p>{user.name}</p> */}
