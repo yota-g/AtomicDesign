@@ -2,9 +2,11 @@ import styled from "styled-components";
 import { SearchInput } from "../molecules/Searchinput";
 import { UserCard } from "../organism/user/UserCard";
 import { SecondaryButton } from "../atom/button/SecondaryButton";
-import { useContext } from "react";
-import { UserContext } from "../../providers/UserProvider";
+// import { useContext } from "react";
+// import { UserContext } from "../../providers/UserProvider";
 // import { useLocation } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import { userState } from "../../store/userState";
 
 const users = [...Array(10).keys()].map((val) => {
   return {
@@ -25,7 +27,9 @@ export const Users = () => {
   // console.log(state);
   //stateの確認を実施。
   // const isAdmin = state ? state.isAdmin : false;
-  const { userInfo, setUserInfo } = useContext(UserContext);
+  // const { userInfo, setUserInfo } = useContext(UserContext);
+  const [userInfo, setUserInfo] = useRecoilState(userState);
+  // 通常のstateと同じように使用することができる
   const onClickSwitch = () => setUserInfo({ isAdmin: !userInfo.isAdmin });
   // 親コンポが再レンダリングされると子も全て再レンダリングされる。実際にする必要はないので、使用する子コンポにmemoを使用する。
   return (

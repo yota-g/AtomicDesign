@@ -8,6 +8,7 @@
 import { UserProvider } from "./providers/UserProvider";
 import { Router } from "./router/Router";
 import "./styles.css";
+import { RecoilRoot } from "recoil";
 
 // const user = {
 //   name: "じゃけぇ",
@@ -22,9 +23,11 @@ import "./styles.css";
 
 export default function App() {
   return (
-    <UserProvider>
-      <Router />
-    </UserProvider>
+    <RecoilRoot>
+      <UserProvider>
+        <Router />
+      </UserProvider>
+    </RecoilRoot>
     //UserProviderで囲った範囲ではcontextが参照できるようになる。
     // return (
     // <BrowserRouter>

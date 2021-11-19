@@ -1,13 +1,17 @@
 import React, { useContext, memo } from "react";
 //Contextを使用するためのツール
+import { useRecoilValue } from "recoil";
+//値しか使用しない時は、 値を参照するだけものもある。
 import styled from "styled-components";
-import { UserContext } from "../../../providers/UserProvider";
+import { userState } from "../../../store/userState";
+// import { UserContext } from "../../../providers/UserProvider";
 
 export const UserIconWithName = memo((props) => {
   const { image, name } = props;
   //importしていたisAdminを消して変数設定することができる。
-  const { userInfo } = useContext(UserContext);
+  // const { userInfo } = useContext(UserContext);
   //どのcontextを使用するかを指定する。
+  const userInfo = useRecoilValue(userState);
   const isAdmin = userInfo ? userInfo.isAdmin : false;
   // console.log("UserIcon");
   return (
