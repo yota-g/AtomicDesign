@@ -1,13 +1,15 @@
-import React, {useContext} from "react";
+import React, { useContext, memo } from "react";
 //Contextを使用するためのツール
 import styled from "styled-components";
-import {UserContext} from "../../../providers/UserProvider"
+import { UserContext } from "../../../providers/UserProvider";
 
-export const UserIconWithName = (props) => {
-  const { image, name, isAdmin } = props;
-  const context = useContext(UserContext);
+export const UserIconWithName = memo((props) => {
+  const { image, name } = props;
+  //importしていたisAdminを消して変数設定することができる。
+  const { userInfo } = useContext(UserContext);
   //どのcontextを使用するかを指定する。
-  console.log(context)
+  const isAdmin = userInfo ? userInfo.isAdmin : false;
+  // console.log("UserIcon");
   return (
     <SContainer>
       {/* heightとwidthも渡せるようにすれば大きさも変えれる。 */}
@@ -16,7 +18,7 @@ export const UserIconWithName = (props) => {
       {isAdmin && <SEdit>編集</SEdit>}
     </SContainer>
   );
-};
+});
 
 const SContainer = styled.div`
   text-align: center;

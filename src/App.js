@@ -23,7 +23,7 @@ import "./styles.css";
 export default function App() {
   return (
     <UserProvider>
-      <Router />;
+      <Router />
     </UserProvider>
     //UserProviderで囲った範囲ではcontextが参照できるようになる。
     // return (
