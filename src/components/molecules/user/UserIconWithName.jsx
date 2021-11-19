@@ -1,7 +1,13 @@
+import React, {useContext} from "react";
+//Contextを使用するためのツール
 import styled from "styled-components";
+import {UserContext} from "../../../providers/UserProvider"
 
 export const UserIconWithName = (props) => {
   const { image, name, isAdmin } = props;
+  const context = useContext(UserContext);
+  //どのcontextを使用するかを指定する。
+  console.log(context)
   return (
     <SContainer>
       {/* heightとwidthも渡せるようにすれば大きさも変えれる。 */}

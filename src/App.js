@@ -5,6 +5,7 @@
 // import { UserCard } from "./components/organism/user/UserCard";
 // import { DefaultLayout } from "./components/template/DefaultLayout";
 // import { HeaderOnly } from "./components/template/HeaderOnly";
+import { UserProvider } from "./providers/UserProvider";
 import { Router } from "./router/Router";
 import "./styles.css";
 
@@ -20,16 +21,21 @@ import "./styles.css";
 // };
 
 export default function App() {
-  return <Router />;
-  // return (
-  // <BrowserRouter>
-  //   <DefaultLayout>
-  //     <PrimaryButton>テスト</PrimaryButton>
-  //     <SecondaryButton>検索する</SecondaryButton>
-  //     <br />
-  //     <SearchInput />
-  //     <UserCard user={user} />
-  //   </DefaultLayout>
-  // </BrowserRouter>
-  // );
+  return (
+    <UserProvider>
+      <Router />;
+    </UserProvider>
+    //UserProviderで囲った範囲ではcontextが参照できるようになる。
+    // return (
+    // <BrowserRouter>
+    //   <DefaultLayout>
+    //     <PrimaryButton>テスト</PrimaryButton>
+    //     <SecondaryButton>検索する</SecondaryButton>
+    //     <br />
+    //     <SearchInput />
+    //     <UserCard user={user} />
+    //   </DefaultLayout>
+    // </BrowserRouter>
+    // );
+  );
 }
